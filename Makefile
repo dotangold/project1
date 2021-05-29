@@ -5,7 +5,7 @@ OBJ = Project1.o
 EXEC = Project1
 LIBS_PATH = -L$(PWD) 
 LIBS = -lCommon
-COMMOM_LIB_PATH=../Common
+COMMOM_LIB_PATH=Common
 INCLUDE_FILES = Common.h
 
 %.o: %.c
@@ -32,8 +32,10 @@ $(EXEC) : $(OBJ)
 
 clean:
 	rm -f *.o $(EXEC) *.so $(INCLUDE_FILES)
+	$(MAKE) -C $(COMMOM_LIB_PATH) clean
 
 all: Shared install $(EXEC)
+	
 	
 	
 ### do : export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)
